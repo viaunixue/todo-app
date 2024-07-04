@@ -4,7 +4,7 @@ import { useAuth } from './security/AuthContext'
 
 function LoginComponent() {
 
-    const [username, setUsername] = useState('in28minutes')
+    const [username, setUsername] = useState('')
 
     const [password, setPassword] = useState('')
 
@@ -24,8 +24,8 @@ function LoginComponent() {
         setPassword(event.target.value)
     }
 
-    function handleSubmit() {
-        if(authContext.login(username, password)){
+    async function handleSubmit() {
+        if(await authContext.login(username, password)){
             navigate(`/welcome/${username}`)
         } else {
             setShowErrorMessage(true)

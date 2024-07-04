@@ -5,9 +5,8 @@ import { useNavigate } from "react-router-dom"
 
 function ListTodosComponent() {
 
-    const today = new Date()
-    
-    const targetDate = new Date(today.getFullYear()+12, today.getMonth(), today.getDay())
+    // const today = new Date()
+    // const targetDate = new Date(today.getFullYear()+12, today.getMonth(), today.getDay())
     
     const authContext = useAuth()
     
@@ -25,7 +24,10 @@ function ListTodosComponent() {
     //                 {id: 3, description: 'Learn DevOps', done: false, targetDate:targetDate},
     //             ]
 
-    useEffect (() => refreshTodos(), [])
+    useEffect (() => {
+        refreshTodos()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     function refreshTodos() {
         retrieveAllTodosForUsernameApi(username)
